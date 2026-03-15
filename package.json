@@ -10,7 +10,8 @@
         "build:scss": "node scripts/build-scss.js",
         "clean": "node scripts/clean.js",
         "start": "npm run build && node scripts/start.js",
-        "start:debug": "npm run build && node scripts/start-debug.js"
+        "start:debug": "npm run build && node scripts/start-debug.js",
+        "test": "jest"
     },
     "description": "Clean Blog is a Medium inspired blog theme for Bootstrap.",
     "keywords": [
@@ -48,6 +49,7 @@
         "pug": "3.0.2",
         "sass": "1.60.0",
         "shelljs": "0.8.5",
-        "upath": "2.0.1"
+        "upath": "2.0.1",
+        "jest": "27.5.1"
     }
 }
