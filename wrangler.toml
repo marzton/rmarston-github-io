@@ -2,11 +2,12 @@ name = "rmarston-github-io"
 main = "worker/index.ts"
 compatibility_date = "2026-03-22"
 
-routes = [
-  { pattern = "rmarston.com/*", zone_name = "rmarston.com" }
-]
+# Routes are intentionally empty.
+# rmarston.com is served directly by GitHub Pages via the CNAME file.
+# Redeploy this worker (wrangler deploy) after removing the old route from
+# the Cloudflare dashboard under Workers & Pages > rmarston-github-io > Triggers.
+routes = []
 
 [vars]
-BACKEND_UPSTREAM = "https://goldshore.ai"
 PRIMARY_DOMAIN = "rmarston.com"
 REDIRECT_MODE = "301"

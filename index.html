@@ -8,6 +8,7 @@
       name="description"
       content="Robert Marston's personal career website showcasing DevOps leadership, cloud architecture, and AI automation expertise."
     />
+    <meta name="author" content="Robert Marston" />
     <style>
       :root {
         --bg: #0b1020;
@@ -73,6 +74,26 @@
       .brand {
         font-weight: 800;
         letter-spacing: 0.04em;
+        font-size: 1.1rem;
+      }
+
+      .brand-link {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+        color: var(--text);
+        transition: opacity 0.2s;
+      }
+      
+      .brand-link:hover {
+        opacity: 0.85;
+      }
+
+      .brand-logo {
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
       }
 
       .links {
@@ -80,6 +101,82 @@
         gap: 1rem;
         color: var(--muted);
         font-size: 0.95rem;
+      }
+
+      .links a {
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .links a:hover {
+        color: var(--brand);
+      }
+
+      /* Hamburger */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0.4rem;
+        z-index: 200;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Mobile overlay menu */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: rgba(11, 16, 32, 0.97);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+        opacity: 1;
+      }
+
+      .mobile-menu a {
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--text);
+        letter-spacing: 0.04em;
+        transition: color 0.2s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--brand);
       }
 
       .hero {
@@ -128,6 +225,12 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        transition: opacity 0.2s, transform 0.15s;
+      }
+
+      .btn:hover {
+        opacity: 0.85;
+        transform: translateY(-1px);
       }
 
       .btn.primary {
@@ -244,19 +347,50 @@
         .links {
           display: none;
         }
+
+        .hamburger {
+          display: flex;
+        }
       }
     </style>
   </head>
   <body>
+    <!-- Mobile overlay menu -->
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#experience" class="mobile-link">Experience</a>
+      <a href="#skills" class="mobile-link">Skills</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </nav>
+
     <header class="nav">
       <div class="container nav-inner">
-        <div class="brand">ROBERT MARSTON</div>
+        <a href="/" class="brand-link" aria-label="Home">
+          <svg class="brand-logo" viewBox="0 0 42 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- R shape in Brand Blue -->
+            <path d="M8 30 V10 H17.5 C21.5 10 24 12.5 24 16.5 C24 19.5 22 21.5 19 22 L24.5 30 H19.5 L14.5 22 H12 V30 Z M12 14 V18 H17.5 C19 18 20 17.5 20 16.5 C20 15.5 19 14 17.5 14 Z" fill="var(--brand)" style="mix-blend-mode: screen;" />
+            <!-- M shape in Accent Green -->
+            <path d="M20 30 V10 H24 L27 16 L30 10 H34 V30 H30 V16 L27 22 L24 16 V30 Z" fill="var(--accent)" style="mix-blend-mode: screen;" />
+          </svg>
+          <div class="brand">ROBERT MARSTON</div>
+        </a>
         <nav class="links" aria-label="Primary navigation">
           <a href="#about">About</a>
           <a href="#experience">Experience</a>
           <a href="#skills">Skills</a>
           <a href="#contact">Contact</a>
         </nav>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
@@ -405,6 +539,27 @@
 
     <script>
       document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Mobile nav
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      hamburger.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.toggle("open");
+        hamburger.classList.toggle("open", isOpen);
+        hamburger.setAttribute("aria-expanded", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
+      });
+
+      // Close menu when a link is clicked
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+          hamburger.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        });
+      });
     </script>
   </body>
 </html>
