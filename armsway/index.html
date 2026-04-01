@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Armsway — Patented Disposable Blood Pressure Sleeve</title>
+  <meta name="description" content="Armsway is a patented disposable blood pressure sleeve designed for single-use clinical and at-home monitoring. View engineering schematics and patent specifications." />
+  <meta name="author" content="Rob Marston" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://rmarston.com/armsway" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rmarston.com/armsway" />
+  <meta property="og:title" content="Armsway — Patented Disposable Blood Pressure Sleeve" />
+  <meta property="og:description" content="Patented disposable blood pressure cuff sleeve for single-use clinical and at-home monitoring." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ===== TOKENS ===== */
+    :root {
+      --green:   #00e5a0;
+      --black:   #080808;
+      --surface: #111111;
+      --border:  #222222;
+      --text:    #e8e8e8;
+      --muted:   #888888;
+      --ff-head: 'Syne', sans-serif;
+      --ff-mono: 'IBM Plex Mono', monospace;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--ff-mono);
+      font-size: 15px;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* ===== NAV ===== */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--black);
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: var(--ff-head);
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green);
+      text-decoration: none;
+    }
+    .nav-back {
+      font-family: var(--ff-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.75rem;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .nav-back:hover { color: var(--green); border-color: var(--green); }
+
+    /* ===== HERO ===== */
+    .hero {
+      padding: 5rem 2rem 3.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-family: var(--ff-head);
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-tagline {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 2.5rem;
+    }
+    .patent-badge {
+      display: inline-block;
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      background: var(--green);
+      padding: 0.35rem 0.9rem;
+      font-weight: 600;
+    }
+
+    /* ===== DIVIDER ===== */
+    .rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 0 2rem;
+    }
+
+    /* ===== VALUE PROP GRID ===== */
+    .section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-family: var(--ff-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    h2 {
+      font-family: var(--ff-head);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+      margin-bottom: 3rem;
+    }
+    .value-card {
+      padding: 1.75rem;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+    }
+    .value-card:last-child { border-right: none; }
+    .value-card-num {
+      font-family: var(--ff-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--green);
+      margin-bottom: 0.75rem;
+    }
+    .value-card h3 {
+      font-family: var(--ff-head);
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.6rem;
+    }
+    .value-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* ===== TECH SPECS DRAWER ===== */
+    .specs-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.75rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-family: var(--ff-head);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      transition: border-color 0.15s;
+    }
+    .specs-trigger:hover { border-color: var(--green); }
+    .specs-trigger[aria-expanded="true"] { border-color: var(--green); color: var(--green); }
+    .specs-icon {
+      font-family: var(--ff-mono);
+      font-size: 1.2rem;
+      transition: transform 0.25s;
+    }
+    .specs-trigger[aria-expanded="true"] .specs-icon { transform: rotate(45deg); }
+
+    .specs-drawer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      border: 1px solid var(--border);
+      border-top: none;
+    }
+    .specs-drawer.open { max-height: 700px; }
+
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+    .specs-table tr { border-bottom: 1px solid var(--border); }
+    .specs-table tr:last-child { border-bottom: none; }
+    .specs-table td {
+      padding: 0.85rem 1.75rem;
+      vertical-align: top;
+    }
+    .specs-table td:first-child {
+      color: var(--muted);
+      width: 40%;
+      letter-spacing: 0.06em;
+    }
+    .specs-table td:last-child { color: var(--text); font-weight: 500; }
+    .specs-table tr:nth-child(odd) td { background: rgba(255,255,255,0.02); }
+
+    /* ===== ASSETS SECTION ===== */
+    .assets-list {
+      list-style: none;
+      border: 1px solid var(--border);
+    }
+    .assets-list li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+    .assets-list li:last-child { border-bottom: none; }
+    .asset-name { display: flex; align-items: center; gap: 0.75rem; color: var(--text); }
+    .asset-icon { color: var(--green); font-size: 0.9rem; }
+    .asset-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 0.2rem 0.5rem;
+    }
+    .asset-coming {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    footer a { color: var(--green); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="./">Armsway</a>
+    <a class="nav-back" href="../">← Archive Index</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="hero-eyebrow">US Patent Pending · Medical Device Innovation</p>
+    <h1>Disposable<br>Blood Pressure<br>Sleeve</h1>
+    <p class="hero-tagline">A single-use, hygienic cuff sleeve engineered to eliminate cross-contamination in clinical and at-home blood pressure monitoring environments.</p>
+    <span class="patent-badge">Patent Pending</span>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- VALUE PROP -->
+  <section class="section">
+    <p class="section-label">Value Proposition</p>
+    <div class="value-grid">
+      <div class="value-card">
+        <p class="value-card-num">01</p>
+        <h3>Hygienic By Design</h3>
+        <p>Single-use construction eliminates pathogen transfer between patients in high-volume clinical settings.</p>
+      </div>
+      <div class="value-card">
+        <p class="value-card-num">02</p>
+        <h3>Universal Fit</h3>
+        <p>Engineered to slide over standard arm-cuff hardware — no proprietary equipment required.</p>
+      </div>
+      <div class="value-card">
+        <p class="value-card-num">03</p>
+        <h3>Cost Efficiency</h3>
+        <p>Per-unit material cost is a fraction of traditional cuff replacement, reducing total cost of care.</p>
+      </div>
+      <div class="value-card">
+        <p class="value-card-num">04</p>
+        <h3>Regulatory Pathway</h3>
+        <p>Designed for 510(k) clearance as a Class II medical accessory with predicate device alignment.</p>
+      </div>
+    </div>
+
+    <!-- TECH SPECS DRAWER -->
+    <button class="specs-trigger" aria-expanded="false" aria-controls="specs-drawer" id="specs-btn">
+      Technical Specifications
+      <span class="specs-icon" aria-hidden="true">+</span>
+    </button>
+    <div class="specs-drawer" id="specs-drawer" role="region" aria-labelledby="specs-btn">
+      <table class="specs-table">
+        <tbody>
+          <tr><td>Material</td><td>Medical-grade non-woven polyester, latex-free</td></tr>
+          <tr><td>Thickness</td><td>0.12 mm nominal wall</td></tr>
+          <tr><td>Cuff Compatibility</td><td>Standard 22–42 cm adult arm cuff</td></tr>
+          <tr><td>Closure</td><td>Peel-seal sterile pouch</td></tr>
+          <tr><td>Sterilization</td><td>EO-compatible; supplied non-sterile (sterilizable)</td></tr>
+          <tr><td>Regulatory Status</td><td>Patent Pending (US)</td></tr>
+          <tr><td>Intended Use</td><td>Single-use clinical &amp; home monitoring accessory</td></tr>
+          <tr><td>Packaging</td><td>50-count dispenser box</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="rule" />
+
+  <!-- ASSETS -->
+  <section class="section">
+    <p class="section-label">Patent Assets &amp; Schematics</p>
+    <ul class="assets-list">
+      <li>
+        <span class="asset-name">
+          <span class="asset-icon">⬡</span>
+          Engineering Schematic — Cross-Section View
+        </span>
+        <span class="asset-coming">Coming Soon</span>
+      </li>
+      <li>
+        <span class="asset-name">
+          <span class="asset-icon">⬡</span>
+          Engineering Schematic — Exploded Assembly
+        </span>
+        <span class="asset-coming">Coming Soon</span>
+      </li>
+      <li>
+        <span class="asset-name">
+          <span class="asset-icon">⬡</span>
+          Patent Application — Full Text (PDF)
+        </span>
+        <span class="asset-coming">Coming Soon</span>
+      </li>
+      <li>
+        <span class="asset-name">
+          <span class="asset-icon">⬡</span>
+          510(k) Predicate Analysis
+        </span>
+        <span class="asset-coming">Coming Soon</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2025 Rob Marston · All rights reserved · Patent Pending</span>
+    <a href="../">rmarston.com/armsway</a>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('specs-btn');
+      var drawer = document.getElementById('specs-drawer');
+      btn.addEventListener('click', function () {
+        var expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        drawer.classList.toggle('open', !expanded);
+      });
+    })();
+  </script>
+</body>
+</html>
