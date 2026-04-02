@@ -72,6 +72,263 @@
       color: var(--white);
       letter-spacing: -0.02em;
     }
+      /* ===== NAV ===== */
+      .nav {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 100;
+        height: var(--nav-h);
+        background: rgba(5,12,24,0.88);
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-bottom: 1px solid rgba(200,169,81,0.12);
+      }
+      .nav-inner {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .nav-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        font-weight: 800;
+        letter-spacing: 0.04em;
+        font-size: 1.1rem;
+      }
+
+      .brand-link {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+        color: var(--text);
+        transition: opacity 0.2s;
+      }
+      
+      .brand-link:hover {
+        opacity: 0.85;
+      }
+
+      .brand-logo {
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
+      }
+      .nav-brand .gs-logo {
+        width: 36px; height: 36px;
+        object-fit: contain;
+        flex-shrink: 0;
+        display: block;
+      }
+      .nav-brand .gs-name { color: var(--brand-lt); }
+      .nav-links {
+        display: flex;
+        gap: 0.15rem;
+        align-items: center;
+      }
+      .nav-links a {
+        padding: 0.4rem 0.75rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        color: var(--muted);
+        font-weight: 500;
+        transition: color var(--transition), background var(--transition);
+      }
+      .nav-links a:hover { color: var(--brand-lt); background: rgba(200,169,81,0.08); }
+      .nav-social {
+        display: flex;
+        gap: 0.35rem;
+        align-items: center;
+      }
+      .nav-social a {
+        width: 34px; height: 34px;
+        display: grid; place-items: center;
+        border-radius: 50%;
+        color: var(--muted);
+        font-size: 0.88rem;
+        transition: color var(--transition), background var(--transition);
+      }
+      .nav-social a:hover { color: var(--brand-lt); background: rgba(200,169,81,0.1); }
+      .nav-cta {
+        padding: 0.45rem 1rem;
+        background: var(--brand);
+        color: #050c18;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 0.85rem;
+        transition: background var(--transition), transform var(--transition);
+      }
+      .nav-cta:hover { background: var(--brand-lt); color: #050c18; transform: translateY(-1px); }
+      .nav-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--muted);
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0.3rem;
+      }
+
+      .links a {
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .links a:hover {
+        color: var(--brand);
+      }
+
+      /* Hamburger */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0.4rem;
+        z-index: 200;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Mobile overlay menu */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: rgba(11, 16, 32, 0.97);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+        opacity: 1;
+      }
+
+      .mobile-menu a {
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--text);
+        letter-spacing: 0.04em;
+        transition: color 0.2s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--brand);
+      }
+
+      .hero {
+        min-height: 100vh;
+        padding-top: var(--nav-h);
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(ellipse 80% 60% at 60% 30%, rgba(200,169,81,0.07) 0%, transparent 70%),
+          radial-gradient(ellipse 50% 80% at 10% 80%, rgba(76,217,160,0.04) 0%, transparent 60%);
+        pointer-events: none;
+      }
+      .hero-inner {
+        display: grid;
+        grid-template-columns: 1.15fr 0.85fr;
+        gap: 3rem;
+        align-items: center;
+        padding: 5rem 0 4rem;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--brand);
+        margin-bottom: 1.25rem;
+      }
+      .hero-eyebrow::before {
+        content: '';
+        width: 28px; height: 2px;
+        background: var(--brand);
+        display: block;
+      }
+      .hero h1 {
+        font-size: clamp(2.2rem, 5vw, 4rem);
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: 1.25rem;
+      }
+      .hero h1 .highlight { color: var(--brand-lt); }
+      .hero-lead {
+        color: var(--muted);
+        font-size: 1.1rem;
+        line-height: 1.75;
+        max-width: 58ch;
+        margin-bottom: 2rem;
+      }
+      .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; }
+
+      /* Buttons */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        transition: opacity 0.2s, transform 0.15s;
+      }
+
+      .btn:hover {
+        opacity: 0.85;
+        transform: translateY(-1px);
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--brand), var(--brand-lt));
+        color: #050c18;
+      }
+      .btn-primary:hover { filter: brightness(1.1); transform: translateY(-2px); color: #050c18; }
+      .btn-outline {
+        background: transparent;
+        color: var(--brand-lt);
+        border-color: var(--brand);
+      }
+      .btn-outline:hover { background: rgba(200,169,81,0.1); transform: translateY(-2px); color: var(--brand-lt); }
 
     h1 span {
       color: var(--green);
@@ -211,12 +468,455 @@
           </tr>
         </tbody>
       </table>
+      /* ===== RESPONSIVE ===== */
+      @media (max-width: 1024px) {
+        .services-grid { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 820px) {
+        .hero-inner,
+        .about-grid,
+        .contact-grid { grid-template-columns: 1fr; }
+        .hero-inner { padding: 3rem 0; }
+        .works-grid { grid-template-columns: 1fr; }
+        .work-card.featured { grid-template-columns: 1fr; }
+        .form-grid { grid-template-columns: 1fr; }
+        .nav-links, .nav-social { display: none; }
+        .nav-links.open {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+          top: var(--nav-h);
+          left: 0; right: 0;
+          background: rgba(5,12,24,0.97);
+          border-bottom: 1px solid var(--border);
+          padding: 1rem;
+          gap: 0.25rem;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Mobile overlay menu -->
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#experience" class="mobile-link">Experience</a>
+      <a href="#skills" class="mobile-link">Skills</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </nav>
+
+    <header class="nav">
+      <div class="container nav-inner">
+        <a href="/" class="brand-link" aria-label="Home">
+          <svg class="brand-logo" viewBox="0 0 42 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- R shape in Brand Blue -->
+            <path d="M8 30 V10 H17.5 C21.5 10 24 12.5 24 16.5 C24 19.5 22 21.5 19 22 L24.5 30 H19.5 L14.5 22 H12 V30 Z M12 14 V18 H17.5 C19 18 20 17.5 20 16.5 C20 15.5 19 14 17.5 14 Z" fill="var(--brand)" style="mix-blend-mode: screen;" />
+            <!-- M shape in Accent Green -->
+            <path d="M20 30 V10 H24 L27 16 L30 10 H34 V30 H30 V16 L27 22 L24 16 V30 Z" fill="var(--accent)" style="mix-blend-mode: screen;" />
+          </svg>
+          <div class="brand">ROBERT MARSTON</div>
+        </a>
+        <nav class="links" aria-label="Primary navigation">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#timeline">Experience</a>
+          <a href="#works">Works</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- HERO -->
+      <section class="hero" id="hero" aria-label="Hero introduction">
+        <div class="container">
+          <div class="hero-inner">
+            <div>
+              <span class="hero-eyebrow">GoldShore LLC &mdash; goldshore.ai</span>
+              <h1>
+                AI Solutions Built for<br>
+                <span class="highlight">Purpose &amp; Staying Power</span>
+              </h1>
+              <p class="hero-lead">
+                Cybersecurity risk control, business systems development &amp; design agency led by <strong>Rob Marston</strong> &mdash; serving clients in fintech, health, investments, digital publishing, and ecommerce across <strong>Long Island, NY</strong> and beyond.
+              </p>
+              <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">
+                  <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                  Work With Us
+                </a>
+                <a href="#works" class="btn btn-outline">
+                  <i class="fas fa-layer-group" aria-hidden="true"></i>
+                  View Works
+                </a>
+                <a href="GoldShore_2025_PitchDeck_Final.pdf" class="btn btn-outline" target="_blank" rel="noopener">
+                  <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                  Pitch Deck
+                </a>
+              </div>
+            </div>
+
+            <aside class="hero-card" aria-label="Agency impact stats">
+              <div class="hero-card-title">Agency Impact</div>
+              <div class="stat-row">
+                <span class="stat-num">36+</span>
+                <span class="stat-desc">Web app clients across publishing, ecommerce, engineering &amp; brand platforms</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-num">10+</span>
+                <span class="stat-desc">Years of cross-industry expertise in dev, design, and systems integration</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-num">70%</span>
+                <span class="stat-desc">Portfolio processing speed increase via Risk Radar AI fintech solutions</span>
+              </div>
+              <div class="agency-badge">
+                <i class="fas fa-circle-check" aria-hidden="true"></i>
+                Seeking investors &amp; strategic clients
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- ABOUT -->
+      <section id="about" aria-labelledby="about-heading">
+        <div class="container">
+          <span class="section-label">About Rob Marston</span>
+          <div class="about-grid reveal">
+            <div class="about-text">
+              <h2 class="section-title" id="about-heading">Jack of All Trades.<br>Master of Systems.</h2>
+              <p>
+                Rob Marston is the founder and lead of <strong>GoldShore LLC</strong> &mdash; a boutique agency at the intersection of cybersecurity, AI engineering, and product design. With a career spanning CAD engineering, enterprise IT, full-stack development, and AI research, Rob brings <strong>rare depth across disciplines</strong>.
+              </p>
+              <p>
+                His philosophy: <em>build things that last</em>. Whether architecting a risk control system for a fintech firm or designing a high-conversion ecommerce platform, Rob approaches every project with the same sharp eye for systems thinking, user experience, and long-term maintainability.
+              </p>
+              <p>
+                Based on <strong>Long Island, NY</strong>, GoldShore serves clients locally and nationally &mdash; bringing Silicon Valley-caliber solutions to markets that demand reliability, discretion, and results.
+              </p>
+              <div class="tag-cloud" aria-label="Expertise tags">
+                <span class="tag">Cybersecurity</span>
+                <span class="tag">AI / ML</span>
+                <span class="tag">Full-Stack Dev</span>
+                <span class="tag">Cloud Infra (AWS)</span>
+                <span class="tag">Fintech</span>
+                <span class="tag">DevOps / CI-CD</span>
+                <span class="tag">UX / UI Design</span>
+                <span class="tag">SEO &amp; Growth</span>
+                <span class="tag">Cloudflare</span>
+                <span class="tag">Long Island, NY</span>
+              </div>
+            </div>
+            <div class="about-pillars">
+              <div class="pillar">
+                <div class="pillar-icon"><i class="fas fa-shield-halved" aria-hidden="true"></i></div>
+                <div>
+                  <div class="pillar-title">Risk Control Systems</div>
+                  <div class="pillar-desc">Security-first architecture for high-stakes fintech, health, and financial platforms that demand auditability and compliance.</div>
+                </div>
+              </div>
+              <div class="pillar">
+                <div class="pillar-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
+                <div>
+                  <div class="pillar-title">AI with Purpose</div>
+                  <div class="pillar-desc">Not AI for its own sake &mdash; purpose-built models and workflows that solve specific business problems with measurable impact.</div>
+                </div>
+              </div>
+              <div class="pillar">
+                <div class="pillar-icon"><i class="fas fa-layer-group" aria-hidden="true"></i></div>
+                <div>
+                  <div class="pillar-title">End-to-End Agency</div>
+                  <div class="pillar-desc">From brand identity and UX design to deployment and monitoring &mdash; GoldShore is a one-stop partner for digital product teams.</div>
+                </div>
+              </div>
+              <div class="pillar">
+                <div class="pillar-icon"><i class="fas fa-location-dot" aria-hidden="true"></i></div>
+                <div>
+                  <div class="pillar-title">Long Island Focused</div>
+                  <div class="pillar-desc">Serving businesses across Long Island and the tri-state area with tailored digital solutions and personal, responsive service.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- SERVICES -->
+      <section id="services" aria-labelledby="services-heading">
+        <div class="container">
+          <span class="section-label">What We Do</span>
+          <h2 class="section-title reveal" id="services-heading">Built for Your Industry</h2>
+          <p class="section-lead reveal">
+            GoldShore specializes in sectors where security, compliance, and performance are non-negotiable. We design and build systems that <em>scale</em> and <em>endure</em>.
+          </p>
+          <div class="services-grid reveal">
+            <article class="service-card">
+              <div class="service-icon"><i class="fas fa-chart-line" aria-hidden="true"></i></div>
+              <div class="service-name">Fintech &amp; Digital Assets</div>
+              <div class="service-desc">Real-time market sentiment analysis, risk radar dashboards, digital asset recovery systems, and compliance-ready financial platforms.</div>
+            </article>
+            <article class="service-card">
+              <div class="service-icon"><i class="fas fa-heart-pulse" aria-hidden="true"></i></div>
+              <div class="service-name">Health &amp; Wellness Tech</div>
+              <div class="service-desc">HIPAA-aware data handling, patient-facing portals, telehealth integrations, and health analytics dashboards.</div>
+            </article>
+            <article class="service-card">
+              <div class="service-icon"><i class="fas fa-coins" aria-hidden="true"></i></div>
+              <div class="service-name">Investments &amp; Wealth</div>
+              <div class="service-desc">Portfolio intelligence tools, automated reporting, risk scoring engines, and investor-grade data visualization.</div>
+            </article>
+            <article class="service-card">
+              <div class="service-icon"><i class="fas fa-newspaper" aria-hidden="true"></i></div>
+              <div class="service-name">Digital Publishing</div>
+              <div class="service-desc">Content management systems, ad-tech integrations, high-traffic publication platforms, and editorial workflow automation.</div>
+            </article>
+            <article class="service-card">
+              <div class="service-icon"><i class="fas fa-cart-shopping" aria-hidden="true"></i></div>
+              <div class="service-name">Ecommerce &amp; Brand</div>
+              <div class="service-desc">Conversion-optimized storefronts, payment integrations, brand identity systems, and ecommerce performance engineering.</div>
+            </article>
+            <article class="service-card">
+              <div class="service-icon"><i class="fas fa-lock" aria-hidden="true"></i></div>
+              <div class="service-name">Cybersecurity Risk Control</div>
+              <div class="service-desc">Threat modeling, WAF configuration (Cloudflare), security audits, incident response planning, and secure-by-design architectures.</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- HORIZONTAL CAREER TIMELINE -->
+      <section id="timeline" aria-labelledby="timeline-heading">
+        <div class="container">
+          <span class="section-label">Career Timeline</span>
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:0.5rem;">
+            <div>
+              <h2 class="section-title reveal" id="timeline-heading">A Career Built Across Industries</h2>
+              <p class="section-lead reveal" style="margin-bottom:0;">
+                From CAD engineering floors to AI fintech labs &mdash; dragging pivotal milestones across a decade-plus of cross-platform expertise.
+              </p>
+            </div>
+            <div class="timeline-controls" aria-label="Timeline navigation">
+              <button class="tl-btn" id="tlPrev" aria-label="Scroll timeline left"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+              <button class="tl-btn" id="tlNext" aria-label="Scroll timeline right"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+            </div>
+          </div>
+
+          <div class="timeline-wrapper reveal">
+            <div class="timeline-track" id="timelineTrack" role="list" aria-label="Career milestones">
+
+              <div class="timeline-item" role="listitem">
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-year">2010 &ndash; 2013</div>
+                <div class="tl-card">
+                  <div class="tl-role">Senior CAD Draftsman</div>
+                  <div class="tl-company">Fabco Industries</div>
+                  <div class="tl-desc">Automated CAD workflows cutting design time by 25%. Mentored engineers, reducing error rates by 35%. First deep dive into systems automation and precision engineering.</div>
+                </div>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-year">2013 &ndash; 2016</div>
+                <div class="tl-card">
+                  <div class="tl-role">Front-End &amp; Web Developer</div>
+                  <div class="tl-company">Freelance / Agency Clients</div>
+                  <div class="tl-desc">Transitioned into web development, building brand platforms and small business systems across Long Island. Established a growing roster of 10+ business clients.</div>
+                </div>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-year">2017 &ndash; 2021</div>
+                <div class="tl-card">
+                  <div class="tl-role">IT Specialist &amp; Developer</div>
+                  <div class="tl-company">ICD Publications</div>
+                  <div class="tl-desc">Developed ML models improving data accuracy by 20%. Led cross-functional teams on web tools for B2B publishing workflows across global markets.</div>
+                </div>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-year">2017 &ndash; 2024</div>
+                <div class="tl-card">
+                  <div class="tl-role">Full-Stack Developer</div>
+                  <div class="tl-company">AXE Creatives</div>
+                  <div class="tl-desc">Led WordPress performance optimization (40% load time reduction). Pre-processed ML training datasets. Delivered campaigns for advertising and media clients.</div>
+                </div>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-year">2018</div>
+                <div class="tl-card">
+                  <div class="tl-role">AWS Certified Solutions Architect</div>
+                  <div class="tl-company">Certification &amp; Recognition</div>
+                  <div class="tl-desc">Achieved AWS certification in scalable system design. Nominated by NY Business Leaders for contributions to tech and AI integration (also 2022).</div>
+                </div>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-year">2020 &ndash; 2023</div>
+                <div class="tl-card">
+                  <div class="tl-role">Agency Growth: 36+ Clients</div>
+                  <div class="tl-company">Cross-Industry Portfolio</div>
+                  <div class="tl-desc">Built over three dozen web apps across publishing, ads, engineering, ecommerce, professional services, and small business brand platforms.</div>
+                </div>
+              </div>
+
+              <div class="timeline-item" role="listitem">
+                <div class="tl-dot" aria-hidden="true"></div>
+                <div class="tl-year">2023 &ndash; Present</div>
+                <div class="tl-card">
+                  <div class="tl-role">Founder &amp; Lead Engineer</div>
+                  <div class="tl-company">GoldShore LLC / goldshore.ai</div>
+                  <div class="tl-desc">Launched GoldShore: cybersecurity risk control and AI agency. Built AutoBrief, BasketBrain, and Risk Radar AI for fintech risk recovery &amp; market sentiment.</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <!-- NOTABLE WORKS -->
+      <section id="works" aria-labelledby="works-heading">
+        <div class="container">
+          <span class="section-label">Notable Works</span>
+          <h2 class="section-title reveal" id="works-heading">Platforms Built to Perform</h2>
+          <p class="section-lead reveal">
+            Selected projects demonstrating cross-industry depth &mdash; from AI-powered fintech tools to publishing infrastructure and ecommerce systems.
+          </p>
+
+          <div class="works-grid reveal">
+            <article class="work-card featured" aria-label="Risk Radar AI flagship project">
+              <div>
+                <div class="work-tag">Flagship &middot; Fintech AI</div>
+                <h3 class="work-name">Risk Radar AI &mdash; Fintech Risk Intelligence Platform</h3>
+                <p class="work-desc">
+                  An AI-powered fintech solution providing real-time market sentiment analysis and digital asset risk recovery. Combines NLP-driven signal processing with portfolio risk scoring to give investors and traders actionable intelligence at the speed of the market. Built for institutional-grade reliability with consumer-facing simplicity.
+                </p>
+                <div style="margin-top:1rem;">
+                  <a href="https://github.com/goldshore" target="_blank" rel="noreferrer noopener" class="btn btn-outline" style="font-size:0.85rem;padding:0.5rem 1.1rem;">
+                    <i class="fab fa-github" aria-hidden="true"></i> View on GitHub
+                  </a>
+                </div>
+              </div>
+              <div class="work-metrics">
+                <div class="metric">
+                  <div class="metric-val">70%</div>
+                  <div class="metric-lbl">Portfolio processing speed increase</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-val">Real-time</div>
+                  <div class="metric-lbl">Market sentiment signals</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-val">AI-native</div>
+                  <div class="metric-lbl">NLP + risk scoring engine</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-val">Fintech</div>
+                  <div class="metric-lbl">Digital asset recovery</div>
+                </div>
+              </div>
+            </article>
+
+            <article class="work-card" aria-label="AutoBrief AI project">
+              <div class="work-tag">AI Automation &middot; GoldShore</div>
+              <h3 class="work-name">AutoBrief &mdash; AI Financial Briefing Engine</h3>
+              <p class="work-desc">Automated financial reporting tool that converts raw market data and portfolio feeds into structured, readable briefings. Powers institutional and retail reporting workflows with 40% productivity gains.</p>
+            </article>
+
+            <article class="work-card" aria-label="36+ client portfolio">
+              <div class="work-tag">Agency Portfolio &middot; 36+ Clients</div>
+              <h3 class="work-name">Cross-Platform Client Portfolio</h3>
+              <p class="work-desc">Over three dozen web applications delivered across publishing, advertising technology, engineering firms, ecommerce, professional services, and small business brand platforms across Long Island and the Northeast.</p>
+            </article>
+
+            <article class="work-card" aria-label="BasketBrain portfolio intelligence">
+              <div class="work-tag">AI &middot; Investments</div>
+              <h3 class="work-name">BasketBrain &mdash; Portfolio Intelligence</h3>
+              <p class="work-desc">AI-driven portfolio analysis and basket-building tool for digital asset investors. Applies machine learning to identify correlations, optimize allocation weights, and surface risk-adjusted opportunities.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="contact" id="contact">
+        <h3>Let’s Work Together</h3>
+        <p class="lead" style="margin-inline: auto">
+          I am looking for senior leadership or advisory opportunities where precision, automation, and cloud-native architecture are valued.
+        </p>
+        <div class="cta-row" style="justify-content: center">
+          <a class="btn primary" href="mailto:hello@rmarston.com"
+            >hello@rmarston.com</a
+          >
+          <a
+            class="btn"
+            href="https://www.linkedin.com/in/robertmarston"
+            target="_blank"
+            rel="noreferrer noopener"
+            >LinkedIn Profile</a
+          >
+        </div>
+      </section>
+
     </main>
 
     <footer>
       <span>rmarston.com</span>
       <span>R. Marston &mdash; All rights reserved</span>
     </footer>
-  </div>
-</body>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Mobile nav
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
+
+      hamburger.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.toggle("open");
+        hamburger.classList.toggle("open", isOpen);
+        hamburger.setAttribute("aria-expanded", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
+      });
+
+      // Close menu when a link is clicked
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+          hamburger.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
+        });
+      });
+    </script>
+  </body>
 </html>
