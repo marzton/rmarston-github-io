@@ -3,56 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rob Marston | GoldShore LLC – AI Agency for Fintech, Health & Digital Business</title>
-    <meta name="description" content="GoldShore LLC is a cybersecurity risk control, business systems dev and design agency led by Rob Marston. Serving clients in fintech, health, investments, digital publishing and ecommerce across Long Island, NY." />
-    <meta name="keywords" content="cybersecurity risk control, AI agency, fintech solutions, health tech, digital publishing, ecommerce, Long Island web development, business systems, Rob Marston, GoldShore, goldshore.ai, Risk Radar AI, Long Island NY" />
-    <meta name="author" content="Rob Marston" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://goldshore.ai" />
-    <link rel="icon" type="image/png" href="logo_goldshore.png" />
-    <link rel="apple-touch-icon" href="logo_goldshore.png" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://goldshore.ai" />
-    <meta property="og:title" content="Rob Marston | GoldShore LLC – AI-Powered Agency" />
-    <meta property="og:description" content="Cybersecurity risk control, business systems dev &amp; design. Fintech · Health · Investments · Digital Publishing · Ecommerce. Long Island, NY." />
-    <meta property="og:site_name" content="GoldShore LLC" />
-    <meta property="og:image" content="https://goldshore.ai/logo_goldshore.png" />
-    <meta property="og:image:width" content="1024" />
-    <meta property="og:image:height" content="1024" />
-    <meta property="og:image:alt" content="GoldShore LLC logo" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Rob Marston | GoldShore LLC" />
-    <meta name="twitter:description" content="AI-powered agency for fintech, health, investments, and digital business. Long Island, NY." />
-    <meta name="twitter:image" content="https://goldshore.ai/logo_goldshore.png" />
-
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "GoldShore LLC",
-      "alternateName": "goldshore.ai",
-      "url": "https://goldshore.ai",
-      "description": "Cybersecurity risk control, business systems development and design agency serving fintech, health, investments, digital publishing and ecommerce clients.",
-      "founder": {
-        "@type": "Person",
-        "name": "Rob Marston",
-        "sameAs": [
-          "https://github.com/goldshore",
-          "https://github.com/marzton",
-          "https://www.linkedin.com/in/r-marston"
-        ]
-      },
-      "areaServed": ["Long Island NY", "New York", "United States"],
-      "serviceType": ["Cybersecurity", "AI Solutions", "Web Development", "Business Systems", "Fintech"]
-    }
-    </script>
-
-    <!-- Font Awesome 6 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <title>Robert Marston | DevOps Engineer & Cloud Architect</title>
+    <meta
+      name="description"
+      content="Robert Marston's personal career website showcasing DevOps leadership, cloud architecture, and AI automation expertise."
+    />
+    <meta name="author" content="Robert Marston" />
     <style>
       /* ===== DESIGN TOKENS ===== */
       :root {
@@ -131,8 +87,27 @@
         align-items: center;
         gap: 0.6rem;
         font-weight: 800;
-        font-size: 1.15rem;
-        letter-spacing: 0.06em;
+        letter-spacing: 0.04em;
+        font-size: 1.1rem;
+      }
+
+      .brand-link {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+        color: var(--text);
+        transition: opacity 0.2s;
+      }
+      
+      .brand-link:hover {
+        opacity: 0.85;
+      }
+
+      .brand-logo {
+        flex-shrink: 0;
+        width: 36px;
+        height: 36px;
       }
       .nav-brand .gs-logo {
         width: 36px; height: 36px;
@@ -189,7 +164,82 @@
         padding: 0.3rem;
       }
 
-      /* ===== HERO ===== */
+      .links a {
+        text-decoration: none;
+        transition: color 0.2s;
+      }
+
+      .links a:hover {
+        color: var(--brand);
+      }
+
+      /* Hamburger */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0.4rem;
+        z-index: 200;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--text);
+        border-radius: 2px;
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Mobile overlay menu */
+      .mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        background: rgba(11, 16, 32, 0.97);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        opacity: 0;
+        transition: opacity 0.25s;
+      }
+
+      .mobile-menu.open {
+        display: flex;
+        opacity: 1;
+      }
+
+      .mobile-menu a {
+        font-size: 1.6rem;
+        font-weight: 700;
+        text-decoration: none;
+        color: var(--text);
+        letter-spacing: 0.04em;
+        transition: color 0.2s;
+      }
+
+      .mobile-menu a:hover {
+        color: var(--brand);
+      }
+
       .hero {
         min-height: 100vh;
         padding-top: var(--nav-h);
@@ -253,15 +303,12 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1.5rem;
-        border-radius: 999px;
-        font-weight: 700;
-        font-size: 0.95rem;
-        cursor: pointer;
-        transition: all var(--transition);
-        border: 1.5px solid transparent;
-        white-space: nowrap;
+        transition: opacity 0.2s, transform 0.15s;
+      }
+
+      .btn:hover {
+        opacity: 0.85;
+        transform: translateY(-1px);
       }
       .btn-primary {
         background: linear-gradient(135deg, var(--brand), var(--brand-lt));
@@ -709,51 +756,52 @@
           padding: 1rem;
           gap: 0.25rem;
         }
-        .nav-toggle { display: block; }
-      }
-      @media (max-width: 600px) {
-        .services-grid { grid-template-columns: 1fr; }
-        .footer-inner { flex-direction: column; text-align: center; }
-        .nav-cta { display: none; }
+
+        .hamburger {
+          display: flex;
+        }
       }
     </style>
   </head>
 
   <body>
+    <!-- Mobile overlay menu -->
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#experience" class="mobile-link">Experience</a>
+      <a href="#skills" class="mobile-link">Skills</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </nav>
 
-    <!-- NAV -->
-    <header class="nav" role="banner">
+    <header class="nav">
       <div class="container nav-inner">
-        <a href="#hero" class="nav-brand" aria-label="GoldShore LLC home">
-          <img class="gs-logo" src="logo_goldshore.png" alt="GoldShore LLC logo" width="36" height="36" />
-          <span class="gs-name">GoldShore</span><span style="color:var(--muted);font-weight:400;font-size:0.85rem;">&nbsp;LLC</span>
+        <a href="/" class="brand-link" aria-label="Home">
+          <svg class="brand-logo" viewBox="0 0 42 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- R shape in Brand Blue -->
+            <path d="M8 30 V10 H17.5 C21.5 10 24 12.5 24 16.5 C24 19.5 22 21.5 19 22 L24.5 30 H19.5 L14.5 22 H12 V30 Z M12 14 V18 H17.5 C19 18 20 17.5 20 16.5 C20 15.5 19 14 17.5 14 Z" fill="var(--brand)" style="mix-blend-mode: screen;" />
+            <!-- M shape in Accent Green -->
+            <path d="M20 30 V10 H24 L27 16 L30 10 H34 V30 H30 V16 L27 22 L24 16 V30 Z" fill="var(--accent)" style="mix-blend-mode: screen;" />
+          </svg>
+          <div class="brand">ROBERT MARSTON</div>
         </a>
-
-        <nav class="nav-links" id="mainNav" aria-label="Primary navigation">
+        <nav class="links" aria-label="Primary navigation">
           <a href="#about">About</a>
           <a href="#services">Services</a>
           <a href="#timeline">Experience</a>
           <a href="#works">Works</a>
           <a href="#contact">Contact</a>
         </nav>
-
-        <div style="display:flex;align-items:center;gap:0.5rem;">
-          <div class="nav-social" aria-label="Social links">
-            <a href="https://github.com/goldshore" target="_blank" rel="noreferrer noopener" aria-label="GitHub @goldshore">
-              <i class="fab fa-github" aria-hidden="true"></i>
-            </a>
-            <a href="https://github.com/marzton" target="_blank" rel="noreferrer noopener" aria-label="GitHub @marzton">
-              <i class="fab fa-github" aria-hidden="true"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/r-marston" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn r-marston">
-              <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-            </a>
-          </div>
-          <a href="#contact" class="nav-cta">Get in Touch</a>
-          <button class="nav-toggle" id="navToggle" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fas fa-bars" aria-hidden="true"></i>
-          </button>
-        </div>
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Toggle navigation"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
     </header>
 
@@ -1084,89 +1132,22 @@
         </div>
       </section>
 
-      <hr class="divider" />
-
-      <!-- CONTACT -->
-      <section class="contact-section" id="contact" aria-labelledby="contact-heading">
-        <div class="container">
-          <div class="contact-grid">
-
-            <div class="contact-info reveal">
-              <span class="section-label">Let&rsquo;s Work Together</span>
-              <h2 id="contact-heading">Ready to Build Something Durable?</h2>
-              <p class="lead">
-                GoldShore is actively seeking <strong>investors</strong> who believe in AI with purpose and <strong>clients</strong> ready to invest in systems that last. Whether you&rsquo;re in fintech, health, investments, publishing, or ecommerce &mdash; let&rsquo;s talk.
-              </p>
-              <nav class="contact-links" aria-label="Contact channels">
-                <a href="mailto:rob@goldshore.ai" class="contact-link">
-                  <i class="fas fa-envelope" aria-hidden="true"></i>
-                  <span>rob@goldshore.ai</span>
-                </a>
-                <a href="https://github.com/goldshore" target="_blank" rel="noreferrer noopener" class="contact-link">
-                  <i class="fab fa-github" aria-hidden="true"></i>
-                  <span>github.com/goldshore</span>
-                </a>
-                <a href="https://github.com/marzton" target="_blank" rel="noreferrer noopener" class="contact-link">
-                  <i class="fab fa-github" aria-hidden="true"></i>
-                  <span>github.com/marzton</span>
-                </a>
-                <a href="https://www.linkedin.com/in/r-marston" target="_blank" rel="noreferrer noopener" class="contact-link">
-                  <i class="fab fa-linkedin-in" aria-hidden="true"></i>
-                  <span>linkedin.com/in/r-marston</span>
-                </a>
-                <a href="https://goldshore.ai" class="contact-link">
-                  <i class="fas fa-globe" aria-hidden="true"></i>
-                  <span>goldshore.ai &mdash; Long Island, NY</span>
-                </a>
-              </nav>
-            </div>
-
-            <div class="contact-form reveal" role="region" aria-label="Contact form">
-              <div class="form-title">Send a Message</div>
-              <form id="contactForm" novalidate>
-                <div class="form-grid">
-                  <div class="form-group">
-                    <label class="form-label" for="cf-name">Name <span aria-hidden="true">*</span></label>
-                    <input class="form-control" type="text" id="cf-name" name="name" placeholder="Your name" required autocomplete="name" />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="cf-email">Email <span aria-hidden="true">*</span></label>
-                    <input class="form-control" type="email" id="cf-email" name="email" placeholder="you@company.com" required autocomplete="email" />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="cf-company">Company</label>
-                    <input class="form-control" type="text" id="cf-company" name="company" placeholder="Company or project" autocomplete="organization" />
-                  </div>
-                  <div class="form-group">
-                    <label class="form-label" for="cf-subject">Subject <span aria-hidden="true">*</span></label>
-                    <select class="form-control" id="cf-subject" name="subject" required>
-                      <option value="" disabled selected>Select topic&hellip;</option>
-                      <option value="investor">Investor Inquiry</option>
-                      <option value="fintech">Fintech / Risk AI Project</option>
-                      <option value="health">Health Tech Project</option>
-                      <option value="ecommerce">Ecommerce / Digital</option>
-                      <option value="cybersecurity">Cybersecurity Audit</option>
-                      <option value="general">General Inquiry</option>
-                    </select>
-                  </div>
-                  <div class="form-group full">
-                    <label class="form-label" for="cf-message">Message <span aria-hidden="true">*</span></label>
-                    <textarea class="form-control" id="cf-message" name="message" placeholder="Tell us about your project, timeline, and goals&hellip;" required></textarea>
-                  </div>
-                </div>
-                <button type="submit" class="form-submit" id="cfSubmit">
-                  <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                  Send Message
-                </button>
-                <div class="form-msg" id="cfSuccess" role="alert" aria-live="polite">
-                  <i class="fas fa-circle-check" aria-hidden="true"></i>
-                  Message sent! We&rsquo;ll be in touch shortly.
-                </div>
-                <div class="form-msg" id="cfError" role="alert" aria-live="assertive"></div>
-              </form>
-            </div>
-
-          </div>
+      <section class="contact" id="contact">
+        <h3>Let’s Work Together</h3>
+        <p class="lead" style="margin-inline: auto">
+          I am looking for senior leadership or advisory opportunities where precision, automation, and cloud-native architecture are valued.
+        </p>
+        <div class="cta-row" style="justify-content: center">
+          <a class="btn primary" href="mailto:hello@rmarston.com"
+            >hello@rmarston.com</a
+          >
+          <a
+            class="btn"
+            href="https://www.linkedin.com/in/robertmarston"
+            target="_blank"
+            rel="noreferrer noopener"
+            >LinkedIn Profile</a
+          >
         </div>
       </section>
 
@@ -1202,153 +1183,28 @@
     </footer>
 
     <script>
-      'use strict';
+      document.getElementById("year").textContent = new Date().getFullYear();
 
-      // Footer year
-      document.getElementById('footerYear').textContent = new Date().getFullYear();
+      // Mobile nav
+      const hamburger = document.getElementById("hamburger");
+      const mobileMenu = document.getElementById("mobileMenu");
 
-      // Mobile nav toggle
-      (function () {
-        var toggle = document.getElementById('navToggle');
-        var nav    = document.getElementById('mainNav');
-        if (!toggle || !nav) return;
+      hamburger.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.toggle("open");
+        hamburger.classList.toggle("open", isOpen);
+        hamburger.setAttribute("aria-expanded", isOpen);
+        document.body.style.overflow = isOpen ? "hidden" : "";
+      });
 
-        toggle.addEventListener('click', function () {
-          var isOpen = nav.classList.toggle('open');
-          toggle.setAttribute('aria-expanded', String(isOpen));
-          toggle.querySelector('i').className = isOpen ? 'fas fa-times' : 'fas fa-bars';
+      // Close menu when a link is clicked
+      mobileMenu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("open");
+          hamburger.classList.remove("open");
+          hamburger.setAttribute("aria-expanded", "false");
+          document.body.style.overflow = "";
         });
-
-        nav.querySelectorAll('a').forEach(function (link) {
-          link.addEventListener('click', function () {
-            nav.classList.remove('open');
-            toggle.setAttribute('aria-expanded', 'false');
-            toggle.querySelector('i').className = 'fas fa-bars';
-          });
-        });
-      }());
-
-      // Horizontal timeline drag-scroll
-      (function () {
-        var track = document.getElementById('timelineTrack');
-        if (!track) return;
-
-        var isDown = false, startX = 0, scrollLeft = 0;
-
-        track.addEventListener('mousedown', function (e) {
-          isDown = true;
-          track.style.cursor = 'grabbing';
-          startX = e.pageX - track.offsetLeft;
-          scrollLeft = track.scrollLeft;
-        });
-
-        ['mouseleave', 'mouseup'].forEach(function (evt) {
-          track.addEventListener(evt, function () {
-            isDown = false;
-            track.style.cursor = 'grab';
-          });
-        });
-
-        track.addEventListener('mousemove', function (e) {
-          if (!isDown) return;
-          e.preventDefault();
-          var x = e.pageX - track.offsetLeft;
-          track.scrollLeft = scrollLeft - (x - startX) * 1.4;
-        });
-
-        var SCROLL_AMT = 300;
-        document.getElementById('tlPrev').addEventListener('click', function () {
-          track.scrollBy({ left: -SCROLL_AMT, behavior: 'smooth' });
-        });
-        document.getElementById('tlNext').addEventListener('click', function () {
-          track.scrollBy({ left: SCROLL_AMT, behavior: 'smooth' });
-        });
-      }());
-
-      // Scroll reveal
-      (function () {
-        if (!('IntersectionObserver' in window)) {
-          document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('visible'); });
-          return;
-        }
-        var obs = new IntersectionObserver(function (entries) {
-          entries.forEach(function (entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              obs.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
-      }());
-
-      // Contact form — POST to /api/contact (Cloudflare Worker)
-      (function () {
-        var form       = document.getElementById('contactForm');
-        var submitBtn  = document.getElementById('cfSubmit');
-        var successMsg = document.getElementById('cfSuccess');
-        var errorMsg   = document.getElementById('cfError');
-
-        if (!form) return;
-
-        form.addEventListener('submit', function (e) {
-          e.preventDefault();
-
-          // Reset messages and ARIA
-          successMsg.className = 'form-msg';
-          errorMsg.className   = 'form-msg';
-
-          // Validate required fields with ARIA
-          var fields = form.querySelectorAll('[required]');
-          var valid  = true;
-          fields.forEach(function (field) {
-            if (!field.value.trim()) {
-              field.style.borderColor = 'var(--danger)';
-              field.setAttribute('aria-invalid', 'true');
-              valid = false;
-            } else {
-              field.style.borderColor = '';
-              field.removeAttribute('aria-invalid');
-            }
-          });
-          if (!valid) {
-            errorMsg.textContent = 'Please fill in all required fields.';
-            errorMsg.className   = 'form-msg error';
-            return;
-          }
-
-          submitBtn.disabled = true;
-          submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin" aria-hidden="true"></i> Sending\u2026';
-
-          var data = new FormData(form);
-
-          fetch('/api/contact', { method: 'POST', body: data })
-            .then(function (res) {
-              if (res.ok) {
-                successMsg.className = 'form-msg success';
-                form.reset();
-                fields.forEach(function (f) { f.removeAttribute('aria-invalid'); });
-              } else {
-                return res.json().then(function (body) {
-                  var msg = (body && body.error) ? body.error : ('Server error (' + res.status + '). Please try again.');
-                  throw new Error(msg);
-                }).catch(function () {
-                  throw new Error('Server error (' + res.status + '). Please try again.');
-                });
-              }
-            })
-            .catch(function (err) {
-              var msg = err && err.message ? err.message : 'Network error. Please check your connection and try again.';
-              errorMsg.textContent = msg;
-              errorMsg.className = 'form-msg error';
-              console.error('Contact form error:', err);
-            })
-            .finally(function () {
-              submitBtn.disabled = false;
-              submitBtn.innerHTML = '<i class="fas fa-paper-plane" aria-hidden="true"></i> Send Message';
-            });
-        });
-      }());
+      });
     </script>
   </body>
 </html>
