@@ -45,7 +45,7 @@
     },
     "devDependencies": {
         "browser-sync": "3.0.4",
-        "chokidar": "3.5.3",
+        "chokidar": "5.0.0",
         "concurrently": "6.3.0",
         "jest": "^30.3.0"
     }
