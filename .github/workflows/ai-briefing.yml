@@ -44,9 +44,14 @@ jobs:
           COMMIT_MSG=$(git log -1 --pretty=format:"%s")
           COMMIT_AUTHOR=$(git log -1 --pretty=format:"%an")
           
+          PAYLOAD=$(jq -n \
+            --arg commit_author "$COMMIT_AUTHOR" \
+            --arg commit_msg "$COMMIT_MSG" \
+            '{text: ("🚨 **Antigravity / Copilot Update!** \n\n*Codebase:* rmarston-github-io\n*Author:* " + $commit_author + "\n*Commit:* " + $commit_msg + "\n\nYour Central AI Context Memory has been securely synchronized across the agency. Ask Gemini Mobile for the latest architecture via Google Workspace!")}') 
+          
           # Curl request to a typical Google Chat / Discord / Zapier webhook
           curl -H "Content-Type: application/json" \
-               -d "{\"text\": \"🚨 **Antigravity / Copilot Update!** \n\n*Codebase:* rmarston-github-io\n*Author:* $COMMIT_AUTHOR\n*Commit:* $COMMIT_MSG\n\nYour Central AI Context Memory has been securely synchronized across the agency. Ask Gemini Mobile for the latest architecture via Google Workspace!\"}" \
+               -d "$PAYLOAD" \
                "$MOBILE_WEBHOOK_URL"
 
       - name: Commit AI Briefing
