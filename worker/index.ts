@@ -1,10 +1,4 @@
-export interface SendEmailBinding {
-  send(message: {
-    from: string;
-    to: string;
-    raw: ReadableStream;
-  }): Promise<void>;
-}
+export interface Env {}
 
 export interface Env {
   CONTACT_FROM_EMAIL?: string;
@@ -139,7 +133,7 @@ export default {
   async fetch(request: Request, env: Env): Promise<Response> {
     const requestUrl = new URL(request.url);
 
-    // Handle contact form API endpoint before any redirect logic
+    // Handle contact form API endpoint
     if (
       requestUrl.pathname === "/api/contact" &&
       (request.method === "POST" || request.method === "OPTIONS")

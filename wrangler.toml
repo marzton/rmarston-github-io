@@ -2,10 +2,11 @@ name = "rmarston-github-io"
 main = "worker/index.ts"
 compatibility_date = "2026-03-22"
 
-# Routes are intentionally empty.
-# rmarston.com is served directly by GitHub Pages via the CNAME file.
-# Redeploy this worker (wrangler deploy) after removing the old route from
-# the Cloudflare dashboard under Workers & Pages > rmarston-github-io > Triggers.
+# Deployment model for this repository:
+# - rmarston.com is served directly by GitHub Pages (see CNAME at repo root).
+# - This worker is intentionally NOT attached to rmarston.com.
+# - Keep routes empty and manage DNS/page routing in Cloudflare + GitHub Pages only.
+# - If any legacy route exists in Cloudflare dashboard, remove it to avoid shadowing.
 routes = []
 
 [vars]
