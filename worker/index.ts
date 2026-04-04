@@ -1,10 +1,4 @@
-export interface SendEmailBinding {
-  send(message: {
-    from: string;
-    to: string;
-    raw: ReadableStream;
-  }): Promise<void>;
-}
+export interface Env {}
 
 export interface Env {
   CONTACT_FROM_EMAIL?: string;
