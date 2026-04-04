@@ -185,6 +185,36 @@ export default {
     );
 
     const upstreamHeaders = new Headers(request.headers);
+
+    // Standard hop-by-hop headers as per RFC 7230
+    const hopByHopHeaders = [
+      "connection",
+      "keep-alive",
+      "proxy-authenticate",
+      "proxy-authorization",
+      "te",
+      "trailers",
+      "transfer-encoding",
+      "upgrade",
+    ];
+
+    // Headers listed in the 'Connection' header are also hop-by-hop
+    const connectionHeader = request.headers.get("connection");
+    if (connectionHeader) {
+      for (const header of connectionHeader.split(",")) {
+        hopByHopHeaders.push(header.trim().toLowerCase());
+      }
+    }
+
+    // Sensitive headers that should not be forwarded
+    const sensitiveHeaders = ["cookie", "authorization"];
+
+    const headersToStrip = [...hopByHopHeaders, ...sensitiveHeaders];
+
+    for (const header of headersToStrip) {
+      upstreamHeaders.delete(header);
+    }
+
     upstreamHeaders.set("host", new URL(upstreamOrigin).hostname);
     upstreamHeaders.set("x-forwarded-host", requestUrl.hostname);
     upstreamHeaders.set(
