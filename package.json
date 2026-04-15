@@ -13,7 +13,7 @@
         "start:debug": "npm run build && node scripts/start-debug.js",
         "test": "jest"
     },
-    "description": "Robert Marston's personal career website — DevOps Engineer & Cloud Architect.",
+    "description": "Robert Marston's personal career website \u2014 DevOps Engineer & Cloud Architect.",
     "keywords": [
         "css",
         "sass",
@@ -34,19 +34,19 @@
         "url": "https://github.com/marzton/rmarston-github-io.git"
     },
     "dependencies": {
-        "autoprefixer": "10.4.14",
-        "bootstrap": "5.2.3",
-        "postcss": "8.4.21",
-        "prettier": "2.8.6",
-        "pug": "3.0.2",
+        "autoprefixer": "10.4.27",
+        "bootstrap": "5.3.8",
+        "postcss": "8.5.9",
+        "prettier": "3.8.2",
+        "pug": "3.0.3",
         "sass": "1.60.0",
-        "shelljs": "0.8.5",
-        "upath": "2.0.1"
+        "shelljs": "0.10.0",
+        "upath": "3.0.6"
     },
     "devDependencies": {
         "browser-sync": "3.0.4",
-        "chokidar": "3.5.3",
-        "concurrently": "6.3.0",
+        "chokidar": "5.0.0",
+        "concurrently": "9.2.1",
         "jest": "^30.3.0"
     }
 }
