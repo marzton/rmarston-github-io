@@ -1,22 +1,35 @@
-name = "rmarston-github-io"
+name = "rmarston-com"
 main = "worker/index.ts"
-compatibility_date = "2026-03-22"
+compatibility_date = "2025-03-07"
+compatibility_flags = ["nodejs_compat"]
 
-# Routes are intentionally empty.
-# rmarston.com is served directly by GitHub Pages via the CNAME file.
-# Redeploy this worker (wrangler deploy) after removing the old route from
-# the Cloudflare dashboard under Workers & Pages > rmarston-github-io > Triggers.
-routes = []
+# Serves rmarston.com directly via Worker + static assets
+# Worker handles /api/contact, assets serve dist/
+assets = { directory = "./dist", not_found_handling = "single-page-application", binding = "ASSETS" }
 
 [vars]
+ENV = "production"
 PRIMARY_DOMAIN = "rmarston.com"
-REDIRECT_MODE = "301"
-CONTACT_FROM_EMAIL = "contact@goldshore.ai"
-CONTACT_TO_EMAIL = "rob@goldshore.ai"
+CONTACT_FROM_EMAIL = "hello@rmarston.com"
+CONTACT_TO_EMAIL = "marstonr6@gmail.com"
 
-# Cloudflare Email Routing — send_email binding
-# Requires Email Routing to be enabled on the goldshore.ai zone and the
-# destination address to be verified in the Cloudflare dashboard.
+# Secrets (set via wrangler secret put):
+#   WEBHOOK_SECRET
+
 [[send_email]]
 name = "SEND_EMAIL"
-destination_address = "rob@goldshore.ai"
+destination_address = "marstonr6@gmail.com"
+
+[[d1_databases]]
+binding = "AUDIT_DB"
+database_name = "gs_audit_db"
+database_id = "1ae71d76-188f-481b-91d9-db2d39013f68"
+
+# Routes — attach worker to domain
+[[routes]]
+pattern = "rmarston.com/*"
+zone_name = "rmarston.com"
+
+[[routes]]
+pattern = "www.rmarston.com/*"
+zone_name = "rmarston.com"
