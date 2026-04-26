@@ -9,7 +9,11 @@ function toCommonJs(sourceText) {
     'const __default_export__ = ',
   );
 
-  return `${withDefaultConst}\nmodule.exports = { default: __default_export__, getRedirectStatus, buildUpstreamUrl };\n`;
+  // Export everything that was defined as a function or const/let/var at top level?
+  // For now let's just export the default and any function that was exported.
+  // Actually, the simple approach is to just export default as that's what we mostly need.
+
+  return `${withDefaultConst}\nmodule.exports = __default_export__;\n`;
 }
 
 module.exports = {
