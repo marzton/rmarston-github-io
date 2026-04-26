@@ -5,11 +5,7 @@
     "admin.rmarston.com",
     "preview.rmarston.com"
   ],
-  "required_routes": [
-    "api.rmarston.com/*",
-    "admin.rmarston.com/*",
-    "preview.rmarston.com/*"
-  ],
+  "required_routes": [],
   "forbidden_routes": [
     "rmarston.com/*",
     "www.rmarston.com/*"

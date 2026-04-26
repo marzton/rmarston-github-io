@@ -20,4 +20,11 @@ To fix this for `rmarston.com`, update the Cloudflare Pages project settings to 
 The repository contains the build source in the root (controlled by `package.json`). Cloudflare Pages must be configured to run the build from the root directory to find the required scripts and configuration files.
 
 **Note on Worker Routing**:
-Per `AGENT_RULES.md`, the apex domain `rmarston.com` should not be intercepted by Worker routes. I have updated `wrangler.toml` and `wrangler.jsonc` to move the Worker logic to `api.rmarston.com/*`.
+Per `AGENT_RULES.md`, the apex domain `rmarston.com` and `www.rmarston.com` must not be intercepted by Worker routes. These have been removed from `wrangler.toml` and `wrangler.jsonc`.
+
+The following Worker routes are required and will be attached to the `rmarston-com` worker upon deployment:
+- `api.rmarston.com/*`
+- `admin.rmarston.com/*`
+- `preview.rmarston.com/*`
+
+Ensure these subdomains have CNAME records pointing to your worker or are configured as Custom Domains in the Cloudflare Worker dashboard.
