@@ -15,10 +15,6 @@ interface JWTPayload {
   email?: string;
   [key: string]: unknown;
 }
-// In-memory cache for JWKS
-let cachedKeys: JsonWebKey[] | null = null;
-let cacheTimestamp: number = 0;
-const CACHE_TTL = 3600 * 1000; // 1 hour in milliseconds
 
 /**
  * Validates a Cloudflare Access JWT assertion.
