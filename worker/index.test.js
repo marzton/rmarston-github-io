@@ -5,7 +5,7 @@ if (typeof URL === 'undefined') {
 }
 
 const workerLogic = {
-  fetch: async (request, env) => {
+  fetch: async (request) => {
     const requestUrl = new URL(request.url);
 
     if (
@@ -15,22 +15,11 @@ const workerLogic = {
       return new Response('contact endpoint', { status: 200 });
     }
 
-    if (requestUrl.pathname.startsWith('/api/')) {
-      return new Response(JSON.stringify({ error: 'API route not found.' }), {
-        status: 404,
-        headers: { 'Content-Type': 'application/json' },
-      });
-    }
-
-    if (request.method === 'GET' || request.method === 'HEAD') {
-      return env.ASSETS.fetch(request);
-    }
-
-    return new Response('Method not allowed.', { status: 405 });
+    return new Response('Not found.', { status: 404 });
   },
 };
 
-describe('Cloudflare Worker API + asset routing', () => {
+describe('Cloudflare Worker API-only routing', () => {
   beforeEach(() => {
     global.Headers = class {
       constructor(init) {
@@ -58,7 +47,6 @@ describe('Cloudflare Worker API + asset routing', () => {
         this.headers = new global.Headers(options.headers);
       }
       async text() { return this.body; }
-      async json() { return JSON.parse(this.body); }
     };
   });
 
@@ -70,25 +58,18 @@ describe('Cloudflare Worker API + asset routing', () => {
     expect(await response.text()).toBe('contact endpoint');
   });
 
-  test('falls through to static assets for website pages', async () => {
-    const request = new Request('https://rmarston.com/');
-    const env = {
-      ASSETS: {
-        fetch: async () => new Response('<html>portfolio</html>', { status: 200 }),
-      },
-    };
-
-    const response = await workerLogic.fetch(request, env);
+  test('handles OPTIONS /api/contact', async () => {
+    const request = new Request('https://rmarston.com/api/contact', { method: 'OPTIONS' });
+    const response = await workerLogic.fetch(request, {});
 
     expect(response.status).toBe(200);
-    expect(await response.text()).toContain('portfolio');
   });
 
-  test('returns 404 JSON for unknown API routes', async () => {
-    const request = new Request('https://rmarston.com/api/missing');
+  test('returns 404 for non-API routes', async () => {
+    const request = new Request('https://rmarston.com/');
     const response = await workerLogic.fetch(request, {});
 
     expect(response.status).toBe(404);
-    expect(await response.json()).toEqual({ error: 'API route not found.' });
+    expect(await response.text()).toBe('Not found.');
   });
 });

@@ -14,16 +14,12 @@ export async function verifyAccessJWT(token: string, aud: string): Promise<boole
     const [headerB64, payloadB64, signatureB64] = token.split(".");
     if (!headerB64 || !payloadB64 || !signatureB64) return false;
 
-    const payload = JSON.parse(atob(payloadB64.replace(/-/g, "+").replace(/_/g, "/"))) as {
-      exp?: number;
-      aud?: string | string[];
-    };
+    const payload = JSON.parse(atob(payloadB64.replace(/-/g, "+").replace(/_/g, "/")));
 
     // Check expiry
     if (!payload.exp || payload.exp < Math.floor(Date.now() / 1000)) return false;
 
     // Check audience
-    if (!payload.aud) return false;
     const audiences: string[] = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
     if (!audiences.includes(aud)) return false;
 
@@ -33,8 +29,8 @@ export async function verifyAccessJWT(token: string, aud: string): Promise<boole
 
     const { keys } = await certsResponse.json<{ keys: JsonWebKey[] }>();
 
-    const header = JSON.parse(atob(headerB64.replace(/-/g, "+").replace(/_/g, "/"))) as { kid?: string };
-    const jwk = keys.find((k) => k.kid === header.kid);
+    const header = JSON.parse(atob(headerB64.replace(/-/g, "+").replace(/_/g, "/")));
+    const jwk = keys.find((k: any) => k.kid === header.kid);
     if (!jwk) return false;
 
     const cryptoKey = await crypto.subtle.importKey(
@@ -61,10 +57,8 @@ export async function verifyAccessJWT(token: string, aud: string): Promise<boole
  */
 export function getEmailFromJWT(token: string): string | null {
   try {
-    const parts = token.split(".");
-    if (parts.length < 2) return null;
-    const payloadB64 = parts[1];
-    const payload = JSON.parse(atob(payloadB64.replace(/-/g, "+").replace(/_/g, "/"))) as { email?: string };
+    const payloadB64 = token.split(".")[1];
+    const payload = JSON.parse(atob(payloadB64.replace(/-/g, "+").replace(/_/g, "/")));
     return payload.email ?? null;
   } catch {
     return null;
