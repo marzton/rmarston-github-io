@@ -1,5 +1,7 @@
 'use strict';
 
+const worker = require('./index');
+
 if (typeof URL === 'undefined') {
   global.URL = require('url').URL;
 }
@@ -14,6 +16,11 @@ const workerLogic = {
     ) {
       return new Response('contact endpoint', { status: 200 });
     }
+  }
+  set(k, v) { this.map.set(k.toLowerCase(), v); }
+  get(k) { return this.map.get(k.toLowerCase()); }
+  has(k) { return this.map.has(k.toLowerCase()); }
+};
 
     return new Response('Not found.', { status: 404 });
   },
@@ -32,11 +39,11 @@ describe('Cloudflare Worker API-only routing', () => {
       get(k) { return this.map.get(k.toLowerCase()); }
     };
 
-    global.Request = class {
-      constructor(url, options = {}) {
-        this.url = url;
-        this.method = options.method || 'GET';
-        this.headers = new global.Headers(options.headers);
+    const env = {
+      CONTACT_FROM_EMAIL: 'sender@example.com',
+      CONTACT_TO_EMAIL: 'receiver@example.com',
+      SEND_EMAIL: {
+        send: jest.fn().mockResolvedValue(undefined)
       }
     };
 
@@ -50,12 +57,22 @@ describe('Cloudflare Worker API-only routing', () => {
     };
   });
 
-  test('handles POST /api/contact', async () => {
-    const request = new Request('https://rmarston.com/api/contact', { method: 'POST' });
-    const response = await workerLogic.fetch(request, {});
+  test('returns 422 for invalid email address', async () => {
+    const formData = new FormData();
+    formData.append('name', 'Test User');
+    formData.append('email', 'invalid-email');
+    formData.append('subject', 'Hello');
+    formData.append('message', 'This is a test message');
 
-    expect(response.status).toBe(200);
-    expect(await response.text()).toBe('contact endpoint');
+    const request = new Request('https://rmarston.com/api/contact', {
+      method: 'POST',
+      body: formData
+    });
+
+    const response = await worker.default.fetch(request, {});
+
+    expect(response.status).toBe(422);
+    expect(await response.json()).toEqual({ error: 'Invalid email address.' });
   });
 
   test('handles OPTIONS /api/contact', async () => {
