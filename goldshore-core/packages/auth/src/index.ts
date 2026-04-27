@@ -15,6 +15,10 @@ interface JWTPayload {
   email?: string;
   [key: string]: unknown;
 }
+// In-memory cache for JWKS
+let cachedKeys: JsonWebKey[] | null = null;
+let cacheTimestamp: number = 0;
+const CACHE_TTL = 3600 * 1000; // 1 hour in milliseconds
 
 /**
  * Validates a Cloudflare Access JWT assertion.
@@ -33,7 +37,6 @@ export async function verifyAccessJWT(token: string, aud: string): Promise<boole
     if (!payload.exp || payload.exp < Math.floor(Date.now() / 1000)) return false;
 
     // Check audience
-    if (!payload.aud) return false;
     const audiences: string[] = Array.isArray(payload.aud) ? payload.aud : [payload.aud];
     if (!audiences.includes(aud)) return false;
 
